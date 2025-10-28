@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+credentials.json
+token.pickle
+venv/
+env/
+.vscode/
+.idea/
+*.log

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartInbox AI - Email Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📧 SmartInbox AI</h1>
+            <div class="header-actions">
+                <button onclick="fetchEmails()" class="btn-primary" id="refreshBtn">
+                    🔄 Refresh Emails
+                </button>
+                <a href="/logout" class="btn-secondary">Logout</a>
+            </div>
+        </header>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Analyzing your emails...</p>
+        </div>
+
+        <div id="stats" class="stats-panel hidden">
+            <div class="stat-card">
+                <div class="stat-number" id="totalEmails">0</div>
+                <div class="stat-label">Total Emails</div>
+            </div>
+            <div class="stat-card urgent">
+                <div class="stat-number" id="urgentEmails">0</div>
+                <div class="stat-label">🔴 Urgent</div>
+            </div>
+            <div class="stat-card action">
+                <div class="stat-number" id="actionEmails">0</div>
+                <div class="stat-label">✅ Need Action</div>
+            </div>
+            <div class="stat-card time">
+                <div class="stat-number" id="estimatedTime">0</div>
+                <div class="stat-label">⏱️ Est. Minutes</div>
+            </div>
+        </div>
+
+        <div id="emailsContainer" class="emails-container"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
