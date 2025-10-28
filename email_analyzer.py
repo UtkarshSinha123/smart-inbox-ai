@@ -1,7 +1,6 @@
 import re
 from datetime import datetime
-from textblob import TextBlob
-import numpy as np
+
 
 
 class EmailAnalyzer:
@@ -111,19 +110,22 @@ class EmailAnalyzer:
         return 'work-low'
 
     def _analyze_sentiment(self, text):
-        """Analyze sentiment of email"""
-        try:
-            blob = TextBlob(text[:500])
-            polarity = blob.sentiment.polarity
+    """Analyze sentiment of email"""
+    # Simple sentiment based on keywords
+    positive_words = ['great', 'excellent', 'good', 'happy', 'thank', 'appreciate']
+    negative_words = ['urgent', 'problem', 'issue', 'error', 'failed', 'critical']
+    
+    text_lower = text.lower()
+    pos_count = sum(1 for word in positive_words if word in text_lower)
+    neg_count = sum(1 for word in negative_words if word in text_lower)
+    
+    if pos_count > neg_count:
+        return 'positive'
+    elif neg_count > pos_count:
+        return 'negative'
+    else:
+        return 'neutral'
 
-            if polarity > 0.3:
-                return 'positive'
-            elif polarity < -0.3:
-                return 'negative'
-            else:
-                return 'neutral'
-        except:
-            return 'neutral'
 
     def _detect_action_items(self, text):
         """Detect if email requires action"""
