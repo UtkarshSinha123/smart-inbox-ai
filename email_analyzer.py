@@ -110,21 +110,21 @@ class EmailAnalyzer:
         return 'work-low'
 
     def _analyze_sentiment(self, text):
-    """Analyze sentiment of email"""
-    # Simple sentiment based on keywords
-    positive_words = ['great', 'excellent', 'good', 'happy', 'thank', 'appreciate']
-    negative_words = ['urgent', 'problem', 'issue', 'error', 'failed', 'critical']
+        """Analyze sentiment of email"""
+        # Simple sentiment based on keywords
+        positive_words = ['great', 'excellent', 'good', 'happy', 'thank', 'appreciate']
+        negative_words = ['urgent', 'problem', 'issue', 'error', 'failed', 'critical']
     
-    text_lower = text.lower()
-    pos_count = sum(1 for word in positive_words if word in text_lower)
-    neg_count = sum(1 for word in negative_words if word in text_lower)
+        text_lower = text.lower()
+        pos_count = sum(1 for word in positive_words if word in text_lower)
+        neg_count = sum(1 for word in negative_words if word in text_lower)
     
-    if pos_count > neg_count:
-        return 'positive'
-    elif neg_count > pos_count:
-        return 'negative'
-    else:
-        return 'neutral'
+        if pos_count > neg_count:
+            return 'positive'
+        elif neg_count > pos_count:
+            return 'negative'
+        else:
+            return 'neutral'
 
 
     def _detect_action_items(self, text):
