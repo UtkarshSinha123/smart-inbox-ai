@@ -12,7 +12,7 @@ class EmailFetcher:
     def __init__(self):
         self.SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
         self.CLIENT_SECRETS_FILE = "credentials.json"
-        self.REDIRECT_URI = os.getenv('REDIRECT_URI', 'http://localhost:5000/oauth2callback')
+        self.REDIRECT_URI = os.getenv('REDIRECT_URI', 'https://smart-inbox-ai-a6el.onrender.com/oauth2callback')
 
     def get_authorization_url(self):
         """Generate OAuth authorization URL"""
